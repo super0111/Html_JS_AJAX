@@ -1,0 +1,93 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?83pxmp');
+  src:  url('fonts/icomoon.eot?83pxmp#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?83pxmp') format('truetype'),
+    url('fonts/icomoon.woff?83pxmp') format('woff'),
+    url('fonts/icomoon.svg?83pxmp#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-expand:before {
+  content: "\e90f";
+  color: #fff;
+}
+.icon-backward-comment:before {
+  content: "\e90e";
+  color: #fff;
+}
+.icon-forward-comment1:before {
+  content: "\e90d";
+  color: #fff;
+}
+.icon-comment-question .path1:before {
+  content: "\e909";
+  color: rgb(89, 89, 236);
+}
+.icon-comment-question .path2:before {
+  content: "\e90a";
+  margin-left: -0.6201171875em;
+  color: rgb(127, 127, 255);
+}
+.icon-comment-question .path3:before {
+  content: "\e90b";
+  margin-left: -0.6201171875em;
+  color: rgb(89, 89, 236);
+}
+.icon-comment-question .path4:before {
+  content: "\e90c";
+  margin-left: -0.6201171875em;
+  color: rgb(127, 127, 255);
+}
+.icon-latest-blog-arrow:before {
+  content: "\e908";
+  color: #b1f392;
+}
+.icon-backward-slick:before {
+  content: "\e906";
+  color: #fff;
+}
+.icon-forward-slick:before {
+  content: "\e907";
+}
+.icon-plus-accordion:before {
+  content: "\e904";
+  color: #fff;
+}
+.icon-cancel-accordion:before {
+  content: "\e905";
+  color: #fff;
+}
+.icon-cancel-plan:before {
+  content: "\e902";
+  color: #ff8282;
+}
+.icon-right-plan:before {
+  content: "\e903";
+  color: #b1f293;
+}
+.icon-meta-save-money:before {
+  content: "\e900";
+  color: #b1f293;
+}
+.icon-create-portfolio:before {
+  content: "\e901";
+  color: #b1f293;
+}

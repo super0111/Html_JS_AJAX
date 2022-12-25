@@ -1,0 +1,817 @@
+<!doctype html>
+<html lang="en-US">
+
+<!-- Mirrored from illuminati.cash/presale-itanimulli.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 08 Jun 2022 15:02:41 GMT -->
+
+<head>
+
+	<title>BBTF Dashboard</title>
+
+
+	<meta content="Trade self-market-making token with hyper-efficient, perma-locked liquidity." name="description">
+	<!-- <meta content="ILLUMINATI - LUMI " property="og:title"> -->
+	<meta content="Trade self-market-making token with hyper-efficient, perma-locked liquidity."
+		property="og:description">
+	<!-- <meta content="https://illuminati.cash/assets/images/og.jpg" property="og:image"> -->
+	<meta property="og:type" content="website">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Fonts -->
+	<link rel="dns-prefetch" href="https://fonts.googleapis.com/" />
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css?family=Roboto%3A100%2C100i%2C300%2C300i%2C400%2C400i%2C500%2C500i%2C700%2C700i%2C900%2C900i%7CPlayfair+Display%3A100%2C100i%2C300%2C300i%2C400%2C400i%2C500%2C500i%2C700%2C700i%2C900%2C900i%7CMr+De+Haviland&amp;display=swap"
+		type="text/css" media="all" />
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins" />
+
+
+	<!-- CSS STYLES -->
+	<link rel="stylesheet" href="assets/css/vendors/bootstrap.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="assets/css/vendors/swiper.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="assets/css/vendors/animate.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="assets/css/maind85a.css" type="text/css" media="all" />
+
+	<!--[if lt IE 9]>
+	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="assets/css/animate.css" rel="stylesheet">
+	<link href="assets/css/slick.css" rel="stylesheet">
+	<link href="assets/css/icomoon/style.css" rel="stylesheet">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+</head>
+
+<body>
+	<div class="wholepage">
+		<div class="mobile_header">
+			<div class="logo_field">
+				<img class="pagelogoimg" src="assets/images/pagelogo.png">
+			</div>
+			<div class="header">
+				<div class="header-title">Token Dashboard</div>
+				<div class="d-flex justify-content-between align-items-center input_with_icon">
+					<input type="text" class="searchInput" placeholder="Wallet Address" id="searchAddress">
+					<button class="btn" onclick="getBalances(this)">
+						<img src="assets/images/searchicon.png">
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="sidebar">
+			<div class="logo_field">
+				<img class="pagelogoimg" src="assets/images/pagelogo.png">
+			</div>
+			<div class="left">
+				<div class="volume">
+					<div class="title">Volume</div>
+					<div class="onerow">
+						<div class="light_text">60Mins</div>
+						<div class="value">$ <span id="volume-1h">--</span></div>
+					</div>
+					<div class="onerow">
+						<div class="light_text">6Hours</div>
+						<div class="value">$ <span id="volume-6h">--</span></div>
+					</div>
+					<div class="onerow">
+						<div class="light_text">24Hours</div>
+						<div class="value">$ <span id="volume-24h">--</span></div>
+					</div>
+				</div>
+				<div class="holders mt-3">
+					<div class="title">Holders</div>
+					<div class="onerow">
+						<div class="light_text">Total Holders</div>
+						<div class="value" id="holders">--</div>
+					</div>
+				</div>
+				<div class="transactions mt-3">
+					<div class="title">Transactions (24 Hours)</div>
+					<div class="onerow">
+						<div class="light_text">Total Transactions</div>
+						<div class="value" id="total_transactions">--</div>
+					</div>
+					<div class="onerow">
+						<div class="light_text">Buys</div>
+						<div class="value" id="buy_transactions">--</div>
+					</div>
+					<div class="onerow">
+						<div class="light_text">Sells</div>
+						<div class="value" id="sell_transactions">--</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="poolbalances mt-3">
+				<div class="title">Rewards Pool Balances</div>
+				<div id="walletinfo" class="walletinfo"></div>
+			</div>
+		</div>
+
+		<div class="dashboard">
+			<div class="header">
+				<div class="header-title">Token Dashboard</div>
+				<div class="d-flex justify-content-between align-items-center input_with_icon">
+					<input type="text" class="searchInput" placeholder="Wallet Address" id="searchAddress">
+					<button class="btn" onclick="getBalances(this)">
+						<img src="assets/images/searchicon.png">
+					</button>
+				</div>
+			</div>
+			<div class="dashbody">
+				<div class="scanned-values flex_column">
+					<div class="d-flex flex-column width_50">
+						<div class="item">
+							<div class="light_text">My Balance</div>
+							<div class="balance_value mt-1" id="balance_value">
+								<div class="valueindollar">$ <div class="" id="valueindollar">--</div></div>
+								<div class="valueinpercent">
+									<img src="assets/images/chartup1.svg">
+									<div class="d-flex align-items-center priceChange">
+										<div id="priceChange">--</div>
+										<div>%</div>
+									</div>
+								</div>
+							</div>
+							<div class="token_holder">
+								<div class="d-flex justify-content-between align-items-center token">
+									<div class="">
+										<div class="d-flex align-items-center">
+											<img class="margin_right_5" src="assets/images/iconarrowup.svg"> 
+											<div class="light_text">Tokens</div>
+										</div>
+										<div class="d-flex align-items-center value_text mt-1">
+											<div id="tokenAmount">--</div>
+											<div>BBTF</div>
+										</div>
+									</div>
+									<div class="divider"></div>
+								</div>
+								
+								<div class="holder">
+									<div class="light_text">Holder position</div>
+									<div class="d-flex align-items-center value_text">
+										<div id="position">--</div>
+										<div>/</div>
+										<div class="" id="totalholders">--</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="item mt-3">
+							<div class="light_text">Holder Distribution</div>
+							<div class="embed-responsive embed-responsive-4by3">
+								<div id="piechart" class="embed-responsive-item"></div>
+								<!-- <div id="pieHoleOverlay" class="pieHole">test 99</div> -->
+							</div>
+						</div>
+					</div>
+
+					<div class="d-flex flex-column width_50 margin_top_-5">
+						<div class="d-flex justify-content-between align-items-center item margin_top_32">
+							<div class="d-flex align-items-center">
+								<img src="assets/images/tokenlogo.png" style="width: 50px; height: 50px;">
+								<div class="d-flex flex-column">
+									<div class="injections_title">Volume Injections</div>
+									<select class="light_text mt-3 border-0" name="cars" id="volume_duration" onchange="getComboA(this)">
+										<option value="5Mins">5Mins</option>
+										<option value="1Hour">1Hour</option>
+										<option value="6Hours">6Hours</option>
+										<option value="24Hours">24Hours</option>
+									</select>
+								</div>
+							</div>
+							<div class="d-flex flex-column">
+								<div class="value_text">
+									<div>$</div>
+									<div id="volume">--</div>
+								</div>
+								<div class="d-flex align-items-center">
+									<img src="assets/images/chartup1.svg"
+										style="height: 6px; width: 10px; margin-right: 5px;">
+									<div class="d-flex align-items-center valueinpercent">
+										<div id="injections" class="mr-1">--</div>
+										<div>Injections</div>
+									</div>
+								</div>
+							</div>
+						</div>
+	
+	
+						<div class="d-flex justify-content-between align-items-center item margin_top_32">
+							<div class="d-flex align-items-center">
+								<img src="assets/images/tokenlogo.png" style="width: 50px; height: 50px;">
+								<div class="d-flex flex-column">
+									<div class="injections_title">Rewards Pool Injections</div>
+									<select class="light_text mt-3 border-0" name="cars" id="reward_duration" onchange="getComboB(this)">
+										<option value="5Mins">5Mins</option>
+										<option value="1Hour">1Hour</option>
+										<option value="6Hours">6Hours</option>
+										<option value="24Hours">24Hours</option>
+									</select>
+								</div>
+							</div>
+							<div class="d-flex flex-column">
+								<div class="value_text">
+									<div>$</div>
+									<div id="rewardspool">--</div>
+								</div>
+								<div class="d-flex align-items-center">
+									<img src="assets/images/chartup1.svg"
+										style="height: 6px; width: 10px; margin-right: 5px;">
+									<div class="d-flex align-items-center valueinpercent">
+										<div id="rewardinjections" class="mr-1">--</div>
+										<div>Injections</div>
+									</div>
+								</div>
+							</div>
+						</div>
+	
+	
+						<div class="d-flex justify-content-between align-items-center item margin_top_32">
+							<div class="d-flex align-items-center">
+								<img src="assets/images/tokenlogo.png" style="width: 50px; height: 50px;">
+								<div class="d-flex flex-column">
+									<div class="injections_title">Staking Rewards</div>
+									<div class="value_text mt-3">
+										<div id="stakingreward">--</div>
+										<div>BBTF</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+					</div>
+
+				</div>
+
+				<div class="analyconv">
+					<div class="volumeanalytics">
+						<div class="title mb-3">Volume Analytics</div>
+						<div id="dexscreener-embed">
+							<iframe
+								src="https://dexscreener.com/bsc/0xefB9D12407fCE3744D157100614cc868f8e0a6d4?embed=1&trades=0&info=0"
+								id="myiFrame"
+								style="width: 100%; height: 400px;"
+								>
+							</iframe>
+						</div>
+					</div>
+
+					<div class="rewardsandswap mt-5">
+						<div class="rewards">
+							<div class="title">Rewards</div>
+							<div class="d-flex flex-column balances onerow">
+								<div class="d-flex justify-content-between align-items-center">
+									<div class="d-flex justify-content-between align-items-center mt-3 width-50">
+										<div class="d-flex align-items-center width-140">
+											<img src="assets/images/iconethereumeth9.svg">
+											<div class="text">SafeMoon</div>
+										</div>
+										<div class="pending_text">pending</div>
+									</div>
+									<div class="d-flex align-items-center value_text">
+										<div id="unsafemoon">--</div>
+										<div>SFM</div>
+									</div>
+								</div>
+								<div class="d-flex justify-content-between align-items-center">
+									<div class="d-flex justify-content-between align-items-center mt-3 width-50">
+										<div class="d-flex align-items-center width-140">
+											<img src="assets/images/iconbitcoinbtc7.svg">
+											<div class="text">BNB-MP</div>
+										</div>
+										<div class="pending_text">pending</div>
+									</div>
+									<div class="d-flex align-items-center value_text">
+										<div id="unbnbmp">--</div>
+										<div>BNB-MP</div>
+									</div>
+								</div>
+								<div class="d-flex justify-content-between align-items-center">
+									<div class="d-flex justify-content-between align-items-center mt-3 width-50">
+										<div class="d-flex align-items-center width-140">
+											<img src="assets/images/iconethereumeth7.svg">
+											<div class="text">BTC-MP</div>
+										</div>
+										<div class="pending_text">pending</div>
+									</div>
+									<div class="d-flex align-items-center value_text">
+										<div id="unbtcmp">--</div>
+										<div>BTC-MP</div>
+									</div>
+								</div>
+								<div class="d-flex justify-content-between align-items-center">
+									<div class="d-flex justify-content-between align-items-center mt-3 width-50">
+										<div class="d-flex align-items-center width-140">
+											<img src="assets/images/iconethereumeth6.svg">
+											<div class="text">Reflecto</div>
+										</div>
+										<div class="pending_text">pending</div>
+									</div>
+									<div class="d-flex align-items-center value_text">
+										<div id="unreflecto">--</div>
+										<div>RTO</div>
+									</div>
+								</div>
+								<div class="d-flex justify-content-between align-items-center">
+									<div class="d-flex justify-content-between align-items-center mt-3 width-50">
+										<div class="d-flex align-items-center width-140">
+											<img src="assets/images/iconlitecoinltc2.svg">
+											<div class="text">GLOW</div>
+										</div>
+										<div class="pending_text">pending</div>
+									</div>
+									<div class="d-flex align-items-center value_text">
+										<div id="unglow">--</div>
+										<div>GLOW</div>
+									</div>
+								</div>
+								<div class="d-flex justify-content-between align-items-center">
+									<div class="d-flex justify-content-between align-items-center mt-3 width-50">
+										<div class="d-flex align-items-center width-140">
+											<img src="assets/images/iconbitcoinbtc6.svg">
+											<div class="text">EverReflect</div>
+										</div>
+										<div class="pending_text">pending</div>
+									</div>
+									<div class="d-flex align-items-center value_text">
+										<div id="uneverreflect">--</div>
+										<div>EVRF</div>
+									</div>
+								</div>
+								<div class="d-flex justify-content-between align-items-center">
+									<div class="d-flex justify-content-between align-items-center mt-3 width-50">
+										<div class="d-flex align-items-center width-140">
+											<img src="assets/images/iconethereumeth9.svg">
+											<div class="text">SafeMoon</div>
+										</div>
+										<div class="pending_text" style="margin-right: -17px;">distributed</div>
+									</div>
+									<div class="d-flex align-items-center value_text">
+										<div id="safemoon">--</div>
+										<div>SFM</div>
+									</div>
+								</div>
+								<div class="d-flex justify-content-between align-items-center">
+									<div class="d-flex justify-content-between align-items-center mt-3 width-50">
+										<div class="d-flex align-items-center width-140">
+											<img src="assets/images/iconbitcoinbtc7.svg">
+											<div class="text">BNB-MP</div>
+										</div>
+										<div class="pending_text" style="margin-right: -17px;">distributed</div>
+									</div>
+									<div class="d-flex align-items-center value_text">
+										<div id="bnbmp">--</div>
+										<div>BNB-MP</div>
+									</div>
+								</div>
+								<div class="d-flex justify-content-between align-items-center">
+									<div class="d-flex justify-content-between align-items-center mt-3 width-50">
+										<div class="d-flex align-items-center width-140">
+											<img src="assets/images/iconethereumeth7.svg">
+											<div class="text">BTC-MP</div>
+										</div>
+										<div class="pending_text" style="margin-right: -17px;">distributed</div>
+									</div>
+									<div class="d-flex align-items-center value_text">
+										<div id="btcmp">--</div>
+										<div>BTC-MP</div>
+									</div>
+								</div>
+								<div class="d-flex justify-content-between align-items-center">
+									<div class="d-flex justify-content-between align-items-center mt-3 width-50">
+										<div class="d-flex align-items-center width-140">
+											<img src="assets/images/iconethereumeth6.svg">
+											<div class="text">Reflecto</div>
+										</div>
+										<div class="pending_text" style="margin-right: -17px;">distributed</div>
+									</div>
+									<div class="d-flex align-items-center value_text">
+										<div id="reflecto">--</div>
+										<div>RTO</div>
+									</div>
+								</div>
+								<div class="d-flex justify-content-between align-items-center">
+									<div class="d-flex justify-content-between align-items-center mt-3 width-50">
+										<div class="d-flex align-items-center width-140">
+											<img src="assets/images/iconlitecoinltc2.svg">
+											<div class="text">GLOW</div>
+										</div>
+										<div class="pending_text" style="margin-right: -17px;">distributed</div>
+									</div>
+									<div class="d-flex align-items-center value_text">
+										<div id="glow">--</div>
+										<div>GLOW</div>
+									</div>
+								</div>
+								<div class="d-flex justify-content-between align-items-center">
+									<div class="d-flex justify-content-between align-items-center mt-3 width-50">
+										<div class="d-flex align-items-center width-140">
+											<img src="assets/images/iconbitcoinbtc6.svg">
+											<div class="text">EverReflect</div>
+										</div>
+										<div class="pending_text" style="margin-right: -17px;">distributed</div>
+									</div>
+									<div class="d-flex align-items-center value_text">
+										<div id="everreflect">--</div>
+										<div>EVRF</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="d-flex flex-column swap">
+							<div class="d-flex justify-content-between align-items-center">
+								<div class="title">Conversion Rate</div>
+								<img style="width: 17px; height: 15px;" src="./assets/images/more.png" >
+							</div>
+							<div class="d-flex justify-content-between align-items-center mt-4">
+								<div class="d-flex align-items-center rate_text">
+									<div>1 BNB = </div>
+									<div id="bbtf_bnb" >--</div>
+									<div >BBTF</div>
+								</div>
+								<img style="width: 15px; height: 15px;" src="./assets/images/arrow-2.png" >
+							</div>
+
+							<div class="d-flex justify-content-between align-items-center p-1 mt-2 value_text">
+								<img src="assets//images/bnb.png" style="width: 30px; height: 30px; padding: 5px;">
+								<div>BNB</div>
+								<img src="assets/images/doubleArrow.jpg"
+									style="width: 30px; height: 30px; padding: 5px;">
+								<img src="assets/images/tokenlogo.png" style="width: 25px; height: 25px; padding: 5px;">
+								<div>BBTF</div>
+							</div>
+							<div class="w-100 mt-3">
+								<a href="https://swap.safemoon.com/#/swap?inputCurrency=0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c&outputCurrency=0xe7057b10e2b59f46d151588d9c8694b4b8328f44">
+									<button>Trade on SafeMoon Swap</button>
+								</a>
+							</div>
+						</div>
+
+						<!-- <div class="graphandswap">
+							<div class="graph">
+								<img src="assets/images/tokenlogo.png"
+									style="width: 50px; height: 50px; margin-right: 10px;">
+								<div class="tokendata" style="margin-right: 20px;">
+									<p style="color: #1a1b2f; font-size: 16px; font-weight: 500;">BlockBusters</p>
+									<p style="color: #1a1b2f; font-size: 14px;">BBTF</p>
+								</div>
+								<div class="graph_value">
+									<img src="assets/images/graph.png">
+									<div style="display: flex;">
+										<p style="color: #4d4949; font-size: 14px;">$</p>
+										<p id="bbtf_price" style="color: #4d4949; font-size: 14px;">--</p>
+									</div>
+								</div>
+							</div>
+						</div> -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="log"></div>
+
+	<script type="text/javascript">
+		var _web3,
+			ABI = {},
+			PRESALE_ADDR = "0xC0ADfc8F1b0778Da48f81EB8417c5887AD3a71D8",
+			USDC_ADDR = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+			BBTF_ADDR = "0xe7057B10E2B59F46D151588d9C8694B4b8328F44",
+			ROUTER_ADDR = "0x10ED43C718714eb63d5aA57B78B54704E256024E",
+			BBTF_EXTERNAL_ADDR = "0x4242cdAE867B118293927720BaBdAb31Cd968E5D",
+			currentAccount;
+	</script>
+
+	<script src="cdn.jsdelivr.net/npm/web3%401.7.0/dist/web3.min.js"></script>
+	<script src="cdn.jsdelivr.net/npm/web3modal%401.9.5/dist/index.min.js"></script>
+	<script src="cdn.jsdelivr.net/npm/%40walletconnect/web3-provider%401.7.1/dist/umd/index.min.js"></script>
+
+
+	<script src="cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+		integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="cdnjs.cloudflare.com/ajax/libs/bignumber.js/9.0.2/bignumber.min.js"
+		integrity="sha512-Z86IB+7iAYTHSnUktNrfGSUdtacVrdxSkfaurvCZNQQkUyFXixivmLWgScARFyzUGDWWlWfOO8KWbz+VUKugHg=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+	<script src="presale498e.js?_t=1654649111" type="text/javascript" crossorigin="anonymous"></script>
+
+	<script src="assets/js/jquery.3.6.0.min.js"></script>
+	<script src="assets/js/popper.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/slick.min.js"></script>
+	<script src="assets/js/custom.js"></script>
+	<script type="text/javascript">
+		let data
+		async function fetchText() {
+			let response = await fetch('https://api.dexscreener.com/latest/dex/pairs/bsc/0xefB9D12407fCE3744D157100614cc868f8e0a6d4');
+			data = await response.json();
+			console.log(data);
+			$('#volume-24h').text(data.pair.volume.h24);
+			$('#volume-1h').text(data.pair.volume.h1);
+			$('#volume-6h').text(data.pair.volume.h6);
+			$('#buy_transactions').text(data.pair.txns.h24.buys);
+			$('#sell_transactions').text(data.pair.txns.h24.sells);
+			$('#total_transactions').text(data.pair.txns.h24.buys + data.pair.txns.h24.sells);
+			$('#bbtf_bnb').text((1 / data.pair.priceNative).toFixed(2));
+			$('#bbtf_price').text(data.pair.priceUsd);
+			const price = data.pair.priceChange.h1;
+			$('#priceChange').text(price);
+			if (price < 0) {
+				$('#priceChange').css({ color: 'red' });
+			}
+			$('#volume').text((data.pair.volume.m5 / 50).toFixed(2));
+			$('#injections').text(data.pair.txns.m5.buys + data.pair.txns.m5.sells);
+			// $('#rewardinjections').text(data.pair.txns.m5.sells);
+		}
+		fetchText();
+
+		function getComboA(selectObject) {
+			var value = selectObject.value;
+			if (value == "5Mins") {
+				$('#volume').text((data.pair.volume.m5 / 50).toFixed(2));
+				$('#injections').text(data.pair.txns.m5.buys + data.pair.txns.m5.sells);
+			} else if (value == "1Hour") {
+				$('#volume').text((data.pair.volume.h1 / 50).toFixed(2));
+				$('#injections').text(data.pair.txns.h1.buys + data.pair.txns.h1.sells);
+			} else if (value == "6Hours") {
+				$('#volume').text((data.pair.volume.h6 / 50).toFixed(2));
+				$('#injections').text(data.pair.txns.h6.buys + data.pair.txns.h6.sells);
+			} else if (value == "24Hours") {
+				$('#volume').text((data.pair.volume.h24 / 50).toFixed(2));
+				$('#injections').text(data.pair.txns.h24.buys + data.pair.txns.h24.sells);
+			}
+		}
+
+		async function getComboB(selectObject) {
+			var value1 = selectObject.value;
+			var timestamp = Math.round((new Date()).getTime() / 1000);
+			var fromblocknumber;
+			var toblocknumber;
+			console.log("timestamp", timestamp);
+			var block = {
+				"url": "https://coins.llama.fi/block/bsc/" + timestamp,
+				"method": "GET",
+				"timeout": 0,
+			};
+			var transactionUrl;
+
+			let response = await fetch("https://coins.llama.fi/block/bsc/" + timestamp);
+			let responseData = await response.json();
+
+			fromblocknumber = responseData.height;
+			toblocknumberm5 = fromblocknumber - 100;
+			toblocknumberh1 = fromblocknumber - 1200;
+			toblocknumberh6 = fromblocknumber - 7200;
+			toblocknumberh24 = fromblocknumber - 28800;
+
+			let transactionUrlm5 = "https://deep-index.moralis.io/api/v2/0x502d5B43A66CF8382F5A65DaDfAC163AFd5F106a?chain=bsc&from_block=" + toblocknumberm5 + "&to_block=" + fromblocknumber;
+			let transactionUrlh1 = "https://deep-index.moralis.io/api/v2/0x502d5B43A66CF8382F5A65DaDfAC163AFd5F106a?chain=bsc&from_block=" + toblocknumberh1 + "&to_block=" + fromblocknumber;
+			let transactionUrlh6 = "https://deep-index.moralis.io/api/v2/0x502d5B43A66CF8382F5A65DaDfAC163AFd5F106a?chain=bsc&from_block=" + toblocknumberh6 + "&to_block=" + fromblocknumber;
+			let transactionUrlh24 = "https://deep-index.moralis.io/api/v2/0x502d5B43A66CF8382F5A65DaDfAC163AFd5F106a?chain=bsc&from_block=" + toblocknumberh24 + "&to_block=" + fromblocknumber;
+
+			const settings = {
+				method: 'GET',
+				timeout: 0,
+				headers: {
+					"X-Api-Key": "1M6DJi0ug6aNKLwZqlyNVGmgi15zzyq6DQxWYZxs1DeSdVTAO1jYv7E4GgOsVR8H"
+				}
+			};
+
+			let response1_m5 = await fetch(transactionUrlm5, settings);
+			let responseData1 = await response1_m5.json();
+			let response1_h1 = await fetch(transactionUrlh1, settings);
+			responseData2 = await response1_h1.json();
+			let response1_h6 = await fetch(transactionUrlh6, settings);
+			responseData3 = await response1_h6.json();
+			let response1_h24 = await fetch(transactionUrlh24, settings);
+			responseData4 = await response1_h24.json();
+
+			console.log("data1", responseData3);
+
+			let bnbprice;
+			var settingsprice = {
+				"url": "https://rpc.ankr.com/multichain",
+				"method": "POST",
+				"timeout": 0,
+				"headers": {
+					"X-Api-Key": "1M6DJi0ug6aNKLwZqlyNVGmgi15zzyq6DQxWYZxs1DeSdVTAO1jYv7E4GgOsVR8H",
+					"Content-Type": "text/plain"
+				},
+				"data": "{\r\n  \"id\": 1,\r\n  \"jsonrpc\": \"2.0\",\r\n  \"method\": \"ankr_getTokenPrice\",\r\n  \"params\": {\r\n    \"blockchain\": \"bsc\",\r\n    \"contractAddress\": \"0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c\"\r\n  }\r\n}",
+			};
+
+			$.ajax(settingsprice).done(function (response) {
+				bnbprice = new BigNumber(response.result.usdPrice).toFixed(4);
+				console.log("price", bnbprice);
+				if (value1 == "5Mins") {
+					var balancem5 = 0;
+					var pricem5;
+					var injections1 = 0;
+					console.log("value1", value1);
+					for (var j = 0; j < responseData1.result.length; j++) {
+						if (responseData1.result[j]?.input?.startsWith("0xf305d719") == true) {
+							var temp1 = Number(responseData1.result[j].value) / 1e18;
+							balancem5 = balancem5 + temp1;
+							injections1 = injections1 + 1;
+							console.log("pricem5", balancem5);
+						}
+					}
+					console.log("bnbprice", bnbprice);
+					pricem5 = balancem5 * bnbprice;
+					if (responseData1.result.length == 0) {
+						$('#rewardspool').text(0);
+					}
+					$('#rewardspool').text(pricem5.toFixed(2));
+					$('#rewardinjections').text(injections1);
+				} else if (value1 == "1Hour") {
+					var balanceh1 = 0;
+					var priceh1;
+					var injections2
+					console.log("value1", value1);
+					for (var k = 0; k < responseData2.result.length; k++) {
+						if (responseData2.result[k]?.input?.startsWith("0xf305d719") == true) {
+							var temp2 = Number(responseData2.result[k].value) / 1e18;
+							balanceh1 = balanceh1 + temp2;
+							injections2 = injections2 + 1;
+							console.log("priceh1", balanceh1);
+						}
+					}
+					console.log("bnbprice", bnbprice);
+					priceh1 = balanceh1 * bnbprice;
+					if (responseData2.result.length == 0) {
+						$('#rewardspool').text(0);
+					}
+					$('#rewardspool').text(priceh1.toFixed(2));
+					$('#rewardinjections').text(injections2);
+				} else if (value1 == "6Hours") {
+					var balanceh6 = 0;
+					var priceh6;
+					var injections3 = 0;
+					console.log("value1", value1);
+					for (var l = 0; l < responseData3.result.length; l++) {
+						if (responseData3.result[l]?.input?.startsWith("0xf305d719") == true) {
+							var temp3 = Number(responseData3.result[l].value) / 1e18;
+							balanceh6 = balanceh6 + temp3;
+							injections3 = injections3 + 1;
+							console.log("priceh6", balanceh6);
+						}
+					}
+					console.log("bnbprice", bnbprice);
+					priceh6 = balanceh6 * bnbprice;
+					if (responseData3.result.length == 0) {
+						$('#rewardspool').text(0);
+					}
+					$('#rewardspool').text(priceh6.toFixed(2));
+					$('#rewardinjections').text(injections3);
+				} else if (value1 == "24Hours") {
+					var balanceh24 = 0;
+					var priceh24;
+					var injections4 = 0;
+					console.log("value1", value1);
+					for (var m = 0; m < responseData4.result.length; m++) {
+						if (responseData4.result[m]?.input?.startsWith("0xf305d719") == true) {
+							var temp4 = Number(responseData4.result[m].value) / 1e18;
+							balanceh24 = balanceh24 + temp4;
+							injections4 = injections4 + 1;
+							console.log("priceh24", balanceh24);
+						}
+					}
+					console.log("bnbprice", bnbprice);
+					priceh24 = (balanceh24 * bnbprice);
+					if (responseData4.result.length == 0) {
+						$('#rewardspool').text(0);
+					}
+					$('#rewardspool').text(priceh24.toFixed(2));
+					$('#rewardinjections').text(injections4);
+				}
+			});
+
+			// const pricesettings = {
+			// 	method: 'POST',
+			// 	timeout: 0,
+			// 	headers: {
+			// 		"X-Api-Key": "1M6DJi0ug6aNKLwZqlyNVGmgi15zzyq6DQxWYZxs1DeSdVTAO1jYv7E4GgOsVR8H",
+			// 		"Content-Type": "text/plain"
+			// 	},
+			// 	data: "{\r\n  \"id\": 1,\r\n  \"jsonrpc\": \"2.0\",\r\n  \"method\": \"ankr_getTokenPrice\",\r\n  \"params\": {\r\n    \"blockchain\": \"bsc\",\r\n    \"contractAddress\": \"0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c\"\r\n  }\r\n}"
+			// };
+
+			// let bnb_usd = await fetch("https://rpc.ankr.com/multichain", pricesettings);
+			// bnbprice = await bnb_usd.json();
+			// console.log("price", bnbprice);
+
+
+
+		}
+	</script>
+
+	<script type="text/javascript">
+		var settings = {
+			"url": "https://rpc.ankr.com/multichain",
+			"method": "POST",
+			"timeout": 0,
+			"headers": {
+				"Content-Type": "text/plain"
+			},
+			"data": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ankr_getAccountBalance\",\r\n    \"params\": {\r\n        \"blockchain\": \"bsc\",\r\n        \"walletAddress\": \"0x502d5b43a66cf8382f5a65dadfac163afd5f106a\",\r\n        \"onlyWhitelisted\": true\r\n    },\r\n    \"id\": 1\r\n}",
+		};
+		$.ajax(settings).done(function (response) {
+			var walletassets = response.result.assets;
+			// var totalBalance = new BigNumber(response.result.totalBalanceUsd / 50).toFixed(2);
+			// $('#rewardspool').text(totalBalance);
+			for (var i = 0; i < walletassets.length; i++) {
+				var item = walletassets[i];
+				var tokenlogo = item.thumbnail;
+				var tokenbalance = new BigNumber(item.balance).toFixed(4);
+				var tokensymbol = item.tokenSymbol;
+				$('#walletinfo').append('<div class="d-flex justify-content-start align-items-center mt-1"><img style="width: 28px; margin-right: 15px;" src=' + tokenlogo + ' style=""><div class="d-flex align-items-center"><div class="text mr-1">' + tokenbalance + '</div><div class="text">' + tokensymbol + '</div></div></div');
+			}
+		});
+	</script>
+
+	<script type="text/javascript">
+		var tokenprice;
+		var stakingBalance;
+		var settings1 = {
+			"url": "https://rpc.ankr.com/multichain",
+			"method": "POST",
+			"timeout": 0,
+			"headers": {
+				"Content-Type": "text/plain"
+			},
+			"data": "{\r\n  \"id\": 1,\r\n  \"jsonrpc\": \"2.0\",\r\n  \"method\": \"ankr_getTokenPrice\",\r\n  \"params\": {\r\n    \"blockchain\": \"bsc\",\r\n    \"contractAddress\": \"0xe7057B10E2B59F46D151588d9C8694B4b8328F44\"\r\n  }\r\n}",
+		};
+
+		$.ajax(settings1).done(function (response) {
+			tokenprice = response.result.usdPrice;
+		});
+		var settings2 = {
+			"url": "https://rpc.ankr.com/multichain",
+			"method": "POST",
+			"timeout": 0,
+			"headers": {
+				"Content-Type": "text/plain"
+			},
+			"data": "{\r\n  \"id\": 1,\r\n  \"jsonrpc\": \"2.0\",\r\n  \"method\": \"ankr_getAccountBalance\",\r\n  \"params\": {\r\n    \"blockchain\": [\r\n      \"bsc\"\r\n    ],\r\n    \"onlyWhitelisted\": true,\r\n    \"pageSize\": 0,\r\n    \"pageToken\": \"string\",\r\n    \"walletAddress\": \"0x4242cdAE867B118293927720BaBdAb31Cd968E5D\"\r\n  }\r\n}",
+		};
+
+		$.ajax(settings2).done(function (response) {
+			var totalUsd = response.result.totalBalanceUsd;
+			stakingBalance = (new BigNumber(totalUsd / tokenprice) * 3 / 100).toFixed(2);
+			$('#stakingreward').text(stakingBalance);
+			console.log("staking", stakingBalance);
+		});
+	</script>
+
+
+	<style type="text/css">
+		.log {
+			position: fixed;
+			color: white;
+			top: 10px;
+			right: 10px;
+			width: 260px;
+		}
+
+		.log div {
+			color: white;
+			width: 100%;
+			padding: 10px;
+			border: 2px solid #fb3c46 !important;
+			box-shadow: 0px 0px 50px #3c71fb6e;
+			background-color: #1D1C3B !important;
+			border-radius: 8px !important;
+			margin-bottom: 15px;
+		}
+
+		.alert-danger {
+			background: #db3b3b;
+			padding: 10px 20px;
+			color: #fff;
+		}
+
+		.alert-success {
+			background: #3bdb8e;
+			padding: 10px 20px;
+			color: #fff;
+		}
+	</style>
+</body>
+
+<!-- Mirrored from illuminati.cash/presale-itanimulli.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 08 Jun 2022 15:03:53 GMT -->
+
+</html>
